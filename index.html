@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Compendium - Twój Partner w Księgowości | Grodków</title>
+    <meta name="description" content="Zaoszczędź czas i pieniądze! Profesjonalne usługi księgowe i BHP w Grodkowie. Darmowa konsultacja. Zadzwoń: 600 477 038">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="format-detection" content="telephone=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #6366f1;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Mobile Call Button */
+        .mobile-call-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+
+        .mobile-call-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .mobile-call-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .nav-links.mobile-open {
+            display: flex;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-feature {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .savings-calculator {
+            margin-top: 1rem;
+        }
+
+        .savings-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            margin: 1rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Trust Indicators */
+        .trust-bar {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .trust-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            text-align: center;
+            color: #475569;
+        }
+
+        .trust-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-weight: bold;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            color: #1e293b;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-question i {
+            color: #6366f1;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            color: white;
+            padding: 100px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #f97316;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f97316;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #f97316;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .header-cta {
+                display: none;
+            }
+
+            .mobile-call-bar {
+                display: block;
+            }
+
+            .chat-widget {
+                bottom: 80px;
+            }
+
+            .chat-button {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 100px 0 50px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .hero-feature {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                padding: 16px 24px;
+                font-size: 1rem;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .trust-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .trust-number {
+                font-size: 2rem;
+            }
+
+            .services {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .why-choose {
+                padding: 60px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .testimonials {
+                padding: 60px 0;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq {
+                padding: 60px 0;
+            }
+
+            .faq-question {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+
+            .contact {
+                padding: 60px 0;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-item {
+                padding: 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .contact-item i {
+                font-size: 1.2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .submit-btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .trust-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (hover: none) {
+            .service-card:hover,
+            .feature-card:hover {
+                transform: none;
+            }
+
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-chart-line"></i>
+                Compendium
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#about">O nas</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="tel:600477038" class="header-cta">
+                    <i class="fas fa-phone"></i> 600 477 038
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Zaoszczędź <span class="highlight">3000 zł</span> rocznie na księgowości!</h1>
+                    <p>Profesjonalne usługi księgowe i BHP w Grodkowie. Darmowa konsultacja i wycena. Płacisz tylko za to, czego potrzebujesz.</p>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature">✓ Darmowa konsultacja</div>
+                        <div class="hero-feature">✓ Rozliczenia w 24h</div>
+                        <div class="hero-feature">✓ Gwarancja terminowości</div>
+                        <div class="hero-feature">✓ Dostępność 7 dni w tygodniu</div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-calculator"></i>
+                            Darmowa wycena
+                        </a>
+                        <a href="tel:600477038" class="btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Zadzwoń teraz
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <h3>Twoje oszczędności</h3>
+                        <div class="savings-calculator">
+                            <div>Koszt księgowej na etacie:</div>
+                            <div class="savings-amount">4500 zł/mies</div>
+                            <div>Nasza usługa:</div>
+                            <div class="savings-amount">800 zł/mies</div>
+                            <div style="border-top: 2px solid #fbbf24; margin: 1rem 0; padding-top: 1rem;">
+                                <strong>Oszczędzasz: 3700 zł/mies!</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <span class="trust-number">150+</span>
+                    <span>Zadowolonych klientów</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">8+</span>
+                    <span>Lat doświadczenia</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">99%</span>
+                    <span>Terminowość</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">24h</span>
+                    <span>Czas odpowiedzi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nasze usługi</h2>
+                <p class="section-subtitle">Kompleksowa obsługa księgowa dostosowana do potrzeb Twojej firmy</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Księgowość pełna</h3>
+                    <p>Kompleksowa obsługa księgowa, bilanse, rachunki zysków i strat, deklaracje podatkowe</p>
+                    <div class="service-price">od 800 zł/mies</div>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Księga przychodów i rozchodów</h3>
+                    <p>Idealne dla małych firm i JDG. Proste rozliczenia, deklaracje VAT, PIT</p>
+                    <div class="service-price">od 300 zł/mies</div>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Kadry i płace</h3>
+                    <p>Obsługa kadrowo-płacowa, umowy, listy płac, ZUS, rozliczenia roczne</p>
+                    <div class="service-price">od 15 zł/osoba</div>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Usługi BHP</h3>
+                    <p>Kompleksowa obsługa BHP, szkolenia, ocena ryzyka, dokumentacja</p>
+                    <div class="service-price">od 200 zł/mies</div>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Zakładanie firmy</h3>
+                    <p>Kompleksowe wsparcie w rozpoczęciu działalności. Od rejestracji po pierwszy PIT</p>
+                    <div class="service-price">za darmo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Dlaczego klienci nas wybierają?</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Nie jesteśmy po prostu biurem księgowym - jesteśmy Twoim partnerem w sukcesie</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Gwarancja bezpieczeństwa</h3>
+                    <p>Ubezpieczenie OC, szyfrowane połączenia, backup danych. Twoje dokumenty są w bezpiecznych rękach.</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Terminowość 99%</h3>
+                    <p>Wszystkie dokumenty składamy przed terminem. Nigdy nie zapłacisz kary z naszej winy.</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Dostępność 24/7</h3>
+                    <p>Pytania? Potrzebujesz dokumentu? Skontaktuj się z nami o każdej porze przez telefon lub email.</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Ciągłe kształcenie</h3>
+                    <p>Śledzimy wszystkie zmiany w prawie. Twoja firma zawsze będzie zgodna z najnowszymi przepisami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Co mówią nasi klienci?</h2>
+                <p class="section-subtitle">Zaufało nam ponad 150 firm z regionu</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-text">"Współpraca z Compendium to była najlepsza decyzja dla mojej firmy. Profesjonalizm, terminowość i bardzo konkurencyjne ceny. Polecam wszystkim!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div>
+                            <strong>Marek Kowalski</strong><br>
+                            <small>Właściciel firmy budowlanej</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-text">"Dzięki profesjonalnej obsłudze księgowej Compendium mogę się skupić na rozwoju swojego biznesu. Terminowość i bardzo konkurencyjne ceny to ich główne atuty!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AN</div>
+                        <div>
+                            <strong>Anna Nowak</strong><br>
+                            <small>Salon fryzjerski</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-text">"Prowadzę restaurację i księgowość zawsze była moim koszmarem. Teraz mogę się skupić na klientach, a Pan Grzegorz zajmuje się wszystkim. Świetny kontakt i szybkie odpowiedzi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PW</div>
+                        <div>
+                            <strong>Piotr Wiśniewski</strong><br>
+                            <small>Restauracja "Smaki Opolszczyzny"</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Najczęściej zadawane pytania</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Ile kosztuje obsługa księgowa mojej firmy?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Koszt zależy od wielkości firmy i ilości operacji. Księga przychodów i rozchodów od 300 zł/mies, pełna księgowość od 800 zł/mies. Skontaktuj się z nami po darmową wycenę!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Czy mogę zmienić biuro księgowe w trakcie roku?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Oczywiście! Pomożemy Ci w płynnym przejściu z poprzedniego biura. Przejmujemy wszystkie dokumenty i kontynuujemy obsługę bez żadnych komplikacji.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Jak szybko składacie deklaracje?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Wszystkie deklaracje składamy minimum 2 dni przed terminem. Masz gwarancję, że nigdy nie zapłacisz kary za opóźnienie z naszej winy.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Czy oferujecie usługi BHP dla małych firm?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Tak! Oferujemy kompleksową obsługę BHP dla firm każdej wielkości. Od pojedynczych szkoleń po pełną dokumentację BHP.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Skontaktuj się z nami</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Darmowa konsultacja i wycena. Odpowiadamy w ciągu 2 godzin!</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Compendium Tamaka Grzegorz</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresy:</strong><br>
+                            <strong>Oddział główny:</strong><br>
+                            Ul. Dąbrowskiej 38<br>
+                            49-200 Grodków<br><br>
+                            <strong>Oddział 2:</strong><br>
+                            Tarnów Grodkowski 134g<br>
+                            49-200 Grodków<br>
+                            Województwo opolskie
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Telefony:</strong><br>
+                            <a href="tel:600477038" style="color: #f97316; text-decoration: none;">600 477 038</a><br>
+                            <a href="tel:570033365" style="color: #f97316; text-decoration: none;">570 033 365</a><br>
+                            <small>Dostępne 7 dni w tygodniu</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:compedium@wp.pl" style="color: #f97316; text-decoration: none;">compedium@wp.pl</a><br>
+                            <small>Odpowiadamy w ciągu 2h</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Godziny pracy:</strong><br>
+                            Pon-Pt: 8:00 - 18:00<br>
+                            Sob: 9:00 - 14:00<br>
+                            <small>Pilne sprawy: 24/7</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Otrzymaj darmową wycenę</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" placeholder="Imię i nazwisko *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Telefon *" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" placeholder="Email *" required>
+                            </div>
+                            <div class="form-group">
+                                <select required>
+                                    <option value="">Rodzaj firmy *</option>
+                                    <option value="jdg">Jednoosobowa działalność</option>
+                                    <option value="sp_zoo">Sp. z o.o.</option>
+                                    <option value="sa">S.A.</option>
+                                    <option value="inne">Inne</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea placeholder="Opisz swoje potrzeby - jakie usługi Cię interesują?"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-calculator"></i> Otrzymaj darmową wycenę
+                        </button>
+
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i>
+                            Dziękujemy! Skontaktujemy się z Państwem w ciągu 2 godzin.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Compendium</h3>
+                    <p>Profesjonalne usługi księgowe i BHP w Grodkowie. Twój partner w sukcesie biznesowym.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Usługi</h3>
+                    <ul>
+                        <li><a href="#services">Księgowość pełna</a></li>
+                        <li><a href="#services">Księga przychodów</a></li>
+                        <li><a href="#services">Kadry i płace</a></li>
+                        <li><a href="#services">Usługi BHP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <ul>
+                        <li>600 477 038</li>
+                        <li>570 033 365</li>
+                        <li>compedium@wp.pl</li>
+                        <li>Grodków - 2 oddziały</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Compendium Tamaka Grzegorz. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Bar -->
+    <div class="mobile-call-bar">
+        <a href="tel:600477038" class="mobile-call-btn">
+            <i class="fas fa-phone"></i>
+            Zadzwoń teraz - 600 477 038
+        </a>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" onclick="window.open('tel:600477038')">
+            <i class="fas fa-phone"></i>
+        </button>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+            const icon = mobileMenuToggle.querySelector('i');
+            
+            if (navLinks.classList.contains('mobile-open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }); 
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                answer.classList.toggle('active');
+                icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Auto-call feature
+        setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+                const callButton = document.querySelector('.chat-button');
+                callButton.style.animation = 'pulse 2s infinite';
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
